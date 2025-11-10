@@ -29,7 +29,7 @@
 body {
   min-block-size: 100dvb;
   display: grid;
-  grid-template-columns: [full-start] 1fr [content-start] 5rem [narrow-start] 70rem [narrow-end] 5rem [content-end] 1fr [full-end];
+  grid-template-columns: [full-start] 1fr [content-start] 5rem [narrow-start] 60rem [narrow-end] 5rem [content-end] 1fr [full-end];
 
   >* {
     grid-column: content;

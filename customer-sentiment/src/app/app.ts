@@ -8,7 +8,8 @@ import { ButtonComponent } from '../button/button.component';
   styleUrls: ['../styles.scss', './app.scss'],
   imports: [InputNumericComponent, ButtonComponent],
   host: {
-    'class': 'box flow'
+    'class': 'box flow',
+    'style': '--flow-space: var(--space-4x-13x);'
   }
 })
 export class App {
