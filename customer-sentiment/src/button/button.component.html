@@ -1,0 +1,19 @@
+<!--
+Usage:
+  Button component with icon and text content projection.
+Required inputs:
+  None
+Optional inputs:
+  type(): <'submit' | 'reset' | 'button'>('button')
+  variant(): <'outline' | 'destructive' | 'text' | 'default'>('default')
+  size(): <'small' | 'default' | 'large'>('default')
+  icon(): string
+-->
+
+<!-- Project SVG icons -->
+<ng-content select="svg" />
+<!-- Project button text content -->
+<span>
+  <ng-content />
+</span>
+<div></div>

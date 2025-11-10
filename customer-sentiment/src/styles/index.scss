@@ -1,0 +1,25 @@
+@use 'sass:meta';
+
+/* Define layers */
+@layer reset {
+  @include meta.load-css('./reset');
+}
+
+@layer abstracts {
+  @include meta.load-css('./abstracts');
+}
+
+@layer global {
+  @include meta.load-css('./global');
+}
+
+@layer primitives {
+  @include meta.load-css('./primitives');
+}
+
+@layer utilities {
+  @include meta.load-css('./utilities');
+}
+
+/* Define layer order of precedence */
+@layer oldcss, reset, abstracts, global, primitives, utilities;

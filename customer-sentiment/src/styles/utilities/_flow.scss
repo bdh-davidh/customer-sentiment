@@ -1,0 +1,8 @@
+/* Provides vertical spacing to direct child of .flow */
+/* ::ng-deep needed to cover projected content */
+
+::ng-deep {
+  .flow > * + * {
+    margin-block-start: var(--flow-space, var(--space-4x));
+  }
+}

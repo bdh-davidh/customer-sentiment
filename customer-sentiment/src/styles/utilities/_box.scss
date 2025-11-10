@@ -1,0 +1,9 @@
+/* Adds default padding to element
+- Set up for a typical block on a treatment page
+*/
+
+.box {
+  /* Maintain minimum vertical spacing on small screens */
+  padding-block: var(--padding-block, max(var(--space-8x), var(--space-4x-13x)));
+  padding-inline: var(--padding-inline, var(--space-4x-13x));
+}

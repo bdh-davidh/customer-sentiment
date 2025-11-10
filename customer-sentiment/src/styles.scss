@@ -1,1 +1,45 @@
-/* You can add global styles to this file, and also import other style files */
+@use 'sass:meta';
+
+/* Define layers */
+@layer reset {
+  @include meta.load-css('./styles/reset');
+}
+
+@layer abstracts {
+  @include meta.load-css('./styles/abstracts');
+}
+
+@layer global {
+  @include meta.load-css('./styles/global');
+}
+
+@layer primitives {
+  @include meta.load-css('./styles/primitives');
+}
+
+@layer utilities {
+  @include meta.load-css('./styles/utilities');
+}
+
+/* Define layer order of precedence */
+@layer reset, abstracts, global, primitives, utilities;
+
+/* Body styles */
+
+body {
+  min-block-size: 100dvb;
+  display: grid;
+  grid-template-columns: [full-start] 1fr [content-start] 5rem [narrow-start] 70rem [narrow-end] 5rem [content-end] 1fr [full-end];
+
+  >* {
+    grid-column: content;
+  }
+
+  >.wide-bleed {
+    grid-column: wide;
+  }
+
+  >.full-bleed {
+    grid-column: full;
+  }
+}

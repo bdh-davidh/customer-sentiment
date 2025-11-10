@@ -1,11 +1,15 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { InputNumericComponent } from '../inputs/input-numeric/input-numeric.component';
+import { ButtonComponent } from '../button/button.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
   templateUrl: './app.html',
-  styleUrl: './app.scss'
+  styleUrls: ['../styles.scss', './app.scss'],
+  imports: [InputNumericComponent, ButtonComponent],
+  host: {
+    'class': 'box flow'
+  }
 })
 export class App {
   protected title = 'customer-sentiment';

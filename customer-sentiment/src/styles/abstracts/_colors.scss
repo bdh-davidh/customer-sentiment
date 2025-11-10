@@ -1,0 +1,109 @@
+:host {
+  /* Neutrals */
+  --clr-neutral-0: oklch(100% 0 0deg);
+  --clr-neutral-5: oklch(98% 0 0deg);
+  --clr-neutral-10: oklch(96% 0 0deg);
+  --clr-neutral-20: oklch(93% 0 0deg);
+  --clr-neutral-30: oklch(86% 0 0deg);
+  --clr-neutral-40: oklch(76% 0 0deg);
+  --clr-neutral-50: oklch(62% 0 0deg);
+  --clr-neutral-70: oklch(47% 0 0deg);
+  --clr-neutral-90: oklch(32% 0 0deg);
+  --clr-neutral-100: oklch(22% 0 0deg);
+
+  /* Semantic colours */
+  --clr-error-20: oklch(95% 0.02 17.53deg);
+  --clr-error-40: oklch(88% 0.05 18.07deg);
+  --clr-error-60: oklch(72% 0.14 21.63deg);
+  --clr-error-80: oklch(58% 0.23 29.09deg);
+  --clr-error-100: oklch(52% 0.21 29.44deg);
+  --clr-success-20: oklch(96% 0.01 151.77deg);
+  --clr-success-40: oklch(88% 0.07 147.02deg);
+  --clr-success-60: oklch(72% 0.13 146.23deg);
+  --clr-success-80: oklch(55% 0.18 143.09deg);
+  --clr-success-100: oklch(48% 0.16 143.2deg);
+  --clr-attention-20: oklch(97% 0.03 88.77deg);
+  --clr-attention-40: oklch(94% 0.08 89.09deg);
+  --clr-attention-60: oklch(90% 0.12 87.92deg);
+  --clr-attention-80: oklch(87% 0.17 90.59deg);
+  --clr-attention-100: oklch(81% 0.16 88.44deg);
+
+  /* Base colours */
+  --clr-default-20: oklch(96% 0.02 239.42deg);
+  --clr-default-30: oklch(89% 0.04 248.32deg);
+  --clr-default-40: oklch(70% 0.12 250.15deg);
+  --clr-default-60: oklch(46% 0.14 254.13deg);
+  --clr-default-80: oklch(36% 0.13 259.25deg);
+  --clr-default-100: oklch(20% 0.12 268.2deg);
+  --clr-junglegreen-20: oklch(94% 0.03 176.57deg);
+  --clr-junglegreen-40: oklch(88% 0.06 175.05deg);
+  --clr-junglegreen-60: oklch(82% 0.09 174.44deg);
+  --clr-junglegreen-80: oklch(77% 0.11 172.19deg);
+  --clr-junglegreen-100: oklch(72% 0.13 169.42deg);
+  --clr-healthblue-20: oklch(95% 0.02 223.67deg);
+  --clr-healthblue-40: oklch(91% 0.05 221.55deg);
+  --clr-healthblue-60: oklch(86% 0.07 221.97deg);
+  --clr-healthblue-80: oklch(82% 0.09 222.27deg);
+  --clr-healthblue-100: oklch(78% 0.11 224.31deg);
+  --clr-citrus-20: oklch(98% 0.03 102.46deg);
+  --clr-citrus-40: oklch(96% 0.05 104deg);
+  --clr-citrus-60: oklch(94% 0.09 104.78deg);
+  --clr-citrus-80: oklch(91% 0.13 105.3deg);
+  --clr-healthgreen-20: oklch(96% 0.01 164.8deg);
+  --clr-healthgreen-40: oklch(93% 0.03 164.42deg);
+  --clr-healthgreen-60: oklch(89% 0.04 166.5deg);
+  --clr-healthgreen-80: oklch(86% 0.05 165.37deg);
+  --clr-healthgreen-100: oklch(82% 0.06 164.42deg);
+  --clr-melon-20: oklch(97% 0.01 28.86deg);
+  --clr-melon-40: oklch(94% 0.03 30.18deg);
+  --clr-melon-60: oklch(90% 0.05 28.89deg);
+  --clr-melon-80: oklch(87% 0.07 29.22deg);
+  --clr-pumpkin-20: oklch(95% 0.02 49.93deg);
+  --clr-pumpkin-40: oklch(88% 0.06 50.06deg);
+  --clr-pumpkin-60: oklch(82% 0.09 50.18deg);
+  --clr-pumpkin-80: oklch(77% 0.13 48.59deg);
+  --clr-pumpkin-100: oklch(72% 0.16 47.25deg);
+  --clr-celeste-20: oklch(95% 0.02 201.11deg);
+  --clr-celeste-40: oklch(91% 0.04 203.07deg);
+  --clr-celeste-60: oklch(86% 0.05 200.72deg);
+  --clr-celeste-80: oklch(82% 0.07 201.75deg);
+  --clr-celeste-100: oklch(78% 0.08 201.49deg);
+  --clr-lilac-20: oklch(95% 0.01 301.28deg);
+  --clr-lilac-40: oklch(90% 0.02 301.92deg);
+  --clr-lilac-60: oklch(84% 0.04 300.22deg);
+  --clr-lilac-80: oklch(79% 0.05 300.52deg);
+  --clr-lilac-100: oklch(74% 0.06 300.13deg);
+  --clr-rose-20: oklch(95% 0.02 351.33deg);
+  --clr-rose-40: oklch(90% 0.05 352.12deg);
+  --clr-rose-60: oklch(85% 0.07 354.95deg);
+  --clr-rose-80: oklch(81% 0.1 355.47deg);
+  --clr-rose-100: oklch(76% 0.13 356.34deg);
+  --clr-organic-20: oklch(94% 0.01 48.65deg);
+  --clr-organic-40: oklch(89% 0.02 48.54deg);
+  --clr-organic-60: oklch(83% 0.02 49.88deg);
+  --clr-organic-80: oklch(77% 0.03 49.36deg);
+  --clr-organic-100: oklch(71% 0.04 48.97deg);
+  --clr-pharmacygreen-20: oklch(92% 0.05 157.77deg);
+  --clr-pharmacygreen-40: oklch(85% 0.09 156.21deg);
+  --clr-pharmacygreen-60: oklch(77% 0.13 154.62deg);
+  --clr-pharmacygreen-80: oklch(71% 0.17 151.47deg);
+  --clr-pharmacygreen-100: oklch(65% 0.19 147.47deg);
+  --clr-adcardpink-20: oklch(90% 0.05 349.23deg);
+  --clr-adcardpink-40: oklch(80% 0.11 351.49deg);
+  --clr-adcardpink-60: oklch(72% 0.17 353.44deg);
+  --clr-adcardpink-80: oklch(65% 0.21 356.83deg);
+  --clr-adcardpink-100: oklch(60% 0.23 2.37deg);
+
+  /* Single use colours */
+  --clr-offerred: oklch(55% 0.22 23.55deg);
+  --clr-promotionalflash: oklch(93% 0.19 103.56deg);
+  --clr-focusblue: oklch(60% 0.22 257.42deg);
+
+  /* Interface */
+  --clr-text: var(--clr-default-100);
+  --clr-link-text: var(--clr-default-60);
+  --clr-background-light: var(--clr-neutral-0);
+  --clr-background-medium: var(--clr-neutral-20);
+  --clr-background-heavy: var(--clr-neutral-30);
+  --clr-border: var(--clr-neutral-20);
+}

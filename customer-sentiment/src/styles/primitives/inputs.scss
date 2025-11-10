@@ -1,0 +1,120 @@
+/* Input styles */
+.input-label {
+  display: flex;
+  gap: var(--space-1x);
+  margin-block-end: 0;
+  font-weight: var(--fontweight-regular);
+
+  .label-text {
+    inline-size: fit-content;
+  }
+
+  /* Reduce padding on compact style inputs */
+  &.size {
+    --compact-padding: 0.25rem;
+  }
+}
+
+.input-icon-wrapper {
+  display: flex;
+  flex-grow: 1;
+  gap: var(--compact-padding, var(--space-2x));
+  align-items: start;
+  justify-content: space-between;
+  inline-size: 100%;
+  padding: var(--compact-padding, var(--space-2x));
+  border-color: var(--clr-neutral-40);
+  border-style: solid;
+  border-width: var(--border-1);
+  border-radius: var(--border-3);
+  background-color: var(--clr-background-light);
+
+  &:has([disabled]), &:has([disabled]) input:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+
+  &:focus-within {
+    outline: var(--border-2) solid var(--focus-color, var(--clr-focusblue));
+    outline-offset: var(--focus-offset, 0.1em);
+  }
+}
+
+.input,
+.textarea {
+  inline-size: 100%;
+  border: none;
+  font-weight: normal;
+  outline: none;
+  background-color: transparent;
+
+  &::placeholder {
+    font-weight: var(--fontweight-regular);
+    color: var(--clr-neutral-50);
+  }
+}
+
+/* Valid styling  */
+.input-icon-wrapper:has([aria-invalid='false'].ng-touched) {
+  border-color: var(--clr-default-80);
+}
+
+/* Invalid styling  */
+// older input error approach (1st line) vs ControlValueAccessor input error approach (2nd line)
+.input-icon-wrapper:has([aria-invalid='true'].ng-touched),
+:host.ng-invalid.ng-touched .input-icon-wrapper {
+  --focus-color: var(--clr-error-100);
+
+  box-shadow: 0 0 0 2px var(--focus-color);
+}
+
+svg[warningIcon] {
+  display: none;
+}
+
+// older input error approach (1st line) vs ControlValueAccessor input error approach (2nd line)
+[aria-invalid='true'].ng-touched ~ svg[warningIcon],
+:host.ng-invalid.ng-touched svg[warningIcon] {
+  display: block;
+  max-block-size: 1.2lh;
+  fill: var(--clr-error-100);
+}
+
+.input-error-message,
+.character-count {
+  margin-block-start: 1px;
+  font-size: var(--fontsize--1);
+}
+
+.input-error-message {
+  font-weight: var(--fontweight-bold);
+  color: var(--clr-error-100);
+}
+
+.left {
+  flex-direction: row;
+  align-items: center;
+}
+
+.top {
+  flex-direction: column;
+}
+
+.right {
+  flex-direction: row-reverse;
+  align-items: center;
+}
+
+.hide {
+  display: flex;
+
+  span {
+    position: absolute;
+    overflow: hidden;
+    inline-size: 1px;
+    block-size: 1px;
+    white-space: nowrap;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+  }
+}

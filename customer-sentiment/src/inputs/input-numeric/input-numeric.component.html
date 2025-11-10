@@ -1,0 +1,57 @@
+<!--
+Usage:
+  A field for entering a number. Rejects non-numerical and negative entries.
+Required inputs:
+  label: string
+Optional inputs:
+  placeholder: <string>()
+  initialValue = <number | null>(null);
+  preventDecimals = <boolean>(false)
+  validators = {
+      required: boolean(true),
+      min: number(0),
+      max: number(Infinity),
+  }();
+  size: <'default' | 'compact'>('default')
+  labelPosition: <'top' | 'left' | 'right'>('top')
+  showErrorMessage: <boolean>(true)
+  errorMessages = {
+    required: <string>(),
+    min: <string>(),
+    max: <string>()
+  }({});
+-->
+
+<label
+  [for]="id"
+  [class]="`${labelPosition()} input-label`"
+  [class.size]="size() === 'compact'">
+  <!-- Display text from [label] input -->
+  <span class="label-text">{{ label() }}</span>
+  <span class="input-icon-wrapper">
+    <!-- Bound to [formControl] input for reactive forms -->
+    <input
+      class="input"
+      [id]="id"
+      type="number"
+      [attr.aria-describedby]="ariaId"
+      [attr.aria-invalid]="inputIsInvalid()"
+      [formControl]="formControl"
+      [placeholder]="placeholder()"
+      (blur)="handleOnBlur()"
+      (keydown)="handleOnKeyDown($event)"
+      (paste)="handleOnPaste($event)"
+    />
+    <svg warningIcon aria-hidden="true"></svg>
+  </span>
+</label>
+
+<!-- Error message display when validation fails -->
+@if (showErrorMessage() && inputIsInvalid()) {
+  <p
+  class="input-error-message"
+  [id]="ariaId"
+  aria-live="polite">
+    {{ errorMessage() }}
+  </p>
+}

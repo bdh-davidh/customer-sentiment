@@ -1,0 +1,125 @@
+:host {
+  font-family: var(--default-font-family);
+  font-size: var(--fontsize-0);
+  font-weight: var(--fontweight-regular);
+  line-height: var(--lineheight-500);
+  color: var(--clr-text);
+  // background-color: var(--clr-background-light); // this messes up points in the website where the bg of the parent is not white
+  interpolate-size: allow-keywords;
+}
+
+/* Heading and matching class styles to enable non-semantic styling */
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3,
+h4,
+.h4 {
+  max-inline-size: 55ch;
+  margin-inline: auto;
+  font-weight: var(--fontweight-regular);
+  line-height: var(--lineheight-300);
+  text-align: center;
+  text-wrap: balance;
+}
+
+h1,
+.h1 {
+  font-size: var(--fontsize-3);
+}
+
+h2,
+.h2 {
+  font-size: var(--fontsize-2);
+}
+
+h3,
+.h3 {
+  font-size: var(--fontsize-1);
+}
+
+h4,
+.h4 {
+  font-size: var(--fontsize-1);
+  font-weight: var(--fontweight-bold);
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+p {
+  font-size: var(--fontsize-0);
+  font-weight: var(--fontweight-light);
+  line-height: var(--lineheight-500);
+  text-wrap: pretty;
+}
+
+small {
+  font-size: var(--fontsize--1);
+}
+
+img {
+  border-radius: var(--radius-1);
+}
+
+/* Adjust thickness on link underline for large font sizes */
+:where(h1, h2, h3, h4) a {
+  text-decoration-thickness: 0.1ex;
+  text-underline-offset: 0.2ex;
+
+  &:hover {
+    text-underline-offset: 0.3ex;
+  }
+}
+
+/* "Label" styles */
+legend {
+  font-weight: var(--fontweight-bold);
+}
+
+/* Link styles */
+[role='link'],
+a:not([class]) {
+  cursor: pointer;
+  color: var(--clr-link-text);
+  text-decoration: underline;
+  text-underline-offset: 0.1lh;
+  transition: all 100ms;
+
+  &:is(:hover, :focus) {
+    text-underline-offset: 0.125lh;
+  }
+}
+
+/* List styles */
+:where(ul, ol)[role='list'] {
+  padding-inline-start: 1.7ch;
+  padding-inline-start: 0;
+  list-style-type: none;
+}
+
+:where(ul, ol)[role='list'] > li:not([class]) {
+  margin-block-start: var(--flow-space, var(--space-3xs));
+  padding-inline-start: var(--space-2xs);
+}
+
+ul ::marker {
+  font-size: 0.8lh;
+  font-weight: var(--fontweight-regular);
+}
+
+/* Links to ids on the same page have a top margin */
+:target {
+  scroll-margin-block: 5lh;
+}
+
+/* Outline focus styles */
+:focus {
+  outline: none
+}
+
+:focus-visible {
+  outline: var(--border-2) solid var(--focus-color, var(--clr-focusblue));
+  outline-offset: var(--focus-offset, 0.1em);
+}

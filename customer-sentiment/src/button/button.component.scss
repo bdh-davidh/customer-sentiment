@@ -1,0 +1,119 @@
+:host {
+  /* Button variants */
+  &[variant="outline"] {
+  --button-border-color: var(--clr-default-100);
+    --button-color: var(--clr-default-100);
+    --button-bg: transparent;
+    --button-hover-background: var(--clr-default-20);
+    --button-hover-border: var(--clr-default-100);
+  }
+
+  /* Button sizes */
+  &[size="small"] {
+    --padding-block: var(--space-1x);
+  }
+
+  &[size="large"] {
+    --padding-block: var(--space-4x);
+  }
+
+  /* Default Button Styles */
+  /* Layout and spacing */
+  display: inline-flex;
+  flex: 1;
+  gap: var(--button-gap, var(--space-2x));
+  align-items: center;
+  justify-content: center;
+  min-inline-size: var(--button-min-width, fit-content);
+  max-inline-size: var(--button-max-width, fit-content);
+  padding-block: var(--button-padding-block, var(--space-3x));
+  padding-inline: var(--button-padding-inline, var(--space-4x));
+  border-color: var(--button-border-color, var(--clr-default-80));
+  border-style: solid;
+
+  /* Stroke and radius */
+  border-width: var(--button-border-width, var(--border-1));
+  border-radius: var(--button-radius, var(--radius-2));
+
+  /* Typography */
+  font-size: var(--button-font-size, 1em);
+  font-weight: var(--button-font-weight, var(--fontweight-regular));
+  line-height: var(--lineheight-100);
+  color: var(--button-color, var(--clr-neutral-0));
+  text-decoration: none;
+
+  /* Colours and Transitions */
+  background: var(--button-bg, var(--clr-default-80));
+  transition: all;
+  transition-timing-function: var(--default-curve);
+  transition-duration: var(--default-duration);
+  text-box: trim-both cap alphabetic;
+
+  &:is(:hover, :focus) {
+    border-color: var(--button-hover-border, var(--clr-default-40));
+    color: var(--button-hover-color, var(--clr-default-100));
+    background: var(--button-hover-background, var(--clr-default-40));
+  }
+
+  &:active {
+    border-color: var(--button-active-border-color, var(--clr-default-100));
+    border-width: var(--button-border-width, var(--border-2));
+    color: var(--button-active-color, var(--clr-default-100));
+    background: var(--button-active-background, var(--clr-default-40));
+  }
+
+  /* Manage icons */
+  ::ng-deep svg {
+    flex: none;
+    inline-size: auto;
+    block-size: var(--icon-size, 1.5em);
+  }
+
+  /* Icon only button */
+  &:has(svg):has(span:empty) {
+    --gap: 0;
+    --min-width: fit-content;
+    --padding-inline: var(--space-2x);
+  }
+
+  /* Text only button */
+  &:not(:has(svg)):has(span:not(:empty)) span {
+    /* Maintain consistent height with icon buttons */
+    display: grid;
+    place-items: center;
+    min-block-size: var(--button-icon-size, 1.3em);
+  }
+
+  /* Icon and text button - Selector in case it's needed */
+  &:has(svg):not(:has(span:empty)) {
+  }
+
+  /* Button states */
+  &:focus-visible {
+    border-radius: var(--radius-2);
+    outline: var(--border-2) solid var(--focus-color, var(--clr-focusblue));
+    outline-offset: var(--focus-offset, 0.1em);
+  }
+
+  &:hover,
+  &:focus {
+    border-color: var(--hover-border, var(--clr-default-40));
+    color: var(--hover-color, var(--clr-default-100));
+    background: var(--hover-background, var(--clr-default-40));
+  }
+
+  &:active {
+    border-color: var(--active-border-color, var(--clr-default-100));
+    color: var(--active-color, var(--clr-default-100));
+    background: var(--active-background, var(--clr-default-40));
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    user-select: none;
+    transform: none;
+    border-color: var(--disabled-border-color, var(--clr-neutral-40));
+    color: var(--disabled-color, var(--clr-neutral-0));
+    background: var(--disabled-background, var(--clr-neutral-40));
+  }
+}
