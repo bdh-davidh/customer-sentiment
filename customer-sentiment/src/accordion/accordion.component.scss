@@ -1,0 +1,75 @@
+:host {
+  // FIXME why is it defaulting to inline?
+  display: block;
+}
+
+details {
+  --transition-duration: 400ms;
+  --transition-curve: var(--springy-curve);
+
+  border: 1px solid;
+  border-color: var(--clr-neutral-40);
+  border-radius: var(--border-4);
+  transition: all;
+  transition-duration: var(--default-duration);
+
+  &[open] {
+    border-color: var(--clr-default-20);
+  }
+
+  .heading {
+    display: flex;
+    gap: var(--space-1x);
+    padding: var(--compact-padding, var(--space-2x));
+    align-items: center;
+    justify-content: space-between;
+    list-style: none;
+    outline: none;
+    cursor: pointer;
+  }
+
+  .content {
+    padding-block: var(--compact-padding, var(--space-2x));
+    padding-inline: var(--compact-padding, var(--space-2x));
+  }
+
+  &:hover {
+    background-color: var(--clr-default-20);
+  }
+
+  &:active {
+    background-color: var(--clr-default-20);
+  }
+
+  // If has a focusable child, only focus on that element not the details itself
+  &:has(> summary:focus-visible) {
+    outline: var(--border-2) solid var(--focus-color, var(--clr-focusblue));
+    outline-offset: var(--focus-offset, 0.1em);
+  }
+}
+
+/* Icon transition */
+details .vertical {
+  transform-origin: center;
+  transform: rotate(0deg);
+  transition: transform var(--transition-duration) var(--transition-curve);
+}
+
+details[open] {
+  svg .vertical {
+    transform: rotate(90deg);
+  }
+}
+
+/* Opening transitions */
+::details-content {
+  overflow: clip;
+  block-size: 0;
+  transition:
+    block-size var(--transition-duration) var(--transition-curve),
+    content-visibility var(--transition-duration) var(--transition-curve) allow-discrete;
+}
+
+[open]::details-content {
+  block-size: auto;
+}

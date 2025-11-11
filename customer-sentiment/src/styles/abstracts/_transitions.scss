@@ -1,6 +1,6 @@
 :host {
   --default-duration: 200ms;
-  --default-curve: cubic-bezier(0.36, 0, 0.64, 1);
+  --default-curve: ease;
   --springy-duration: 700ms;
   --springy-curve: linear(
   0,

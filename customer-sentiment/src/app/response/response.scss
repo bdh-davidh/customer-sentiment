@@ -1,0 +1,92 @@
+:host {
+  display: block;
+  padding-block: var(--space-4x);
+  padding-inline: var(--space-4x);
+  border-inline-start: 5px solid;
+  border-radius: var(--radius-4);
+
+  > * {
+    --flow-space: var(--space-4x);
+  }
+
+  &:has(.negative) {
+    border-color: var(--clr-error-80);
+  }
+
+  &:has(.neutral) {
+    border-color: var(--clr-pumpkin-100);
+  }
+
+  &:has(.positive) {
+    border-color: var(--clr-success-80);
+  }
+}
+
+.sentiment {
+  padding-block: var(--space-1x);
+  padding-inline: var(--space-4x);
+  border-radius: var(--radius-1);
+  font-weight: var(--fontweight-bold);
+  letter-spacing: 0.5px;
+}
+
+.negative {
+  color: var(--clr-error-80);
+  background-color: var(--clr-error-20);
+}
+
+.neutral {
+  color: var(--clr-pumpkin-100);
+  background-color: var(--clr-pumpkin-20);
+}
+
+.positive {
+  color: var(--clr-success-80);
+  background-color: var(--clr-success-20);
+}
+
+.patient-id {
+  font-size: var(--fontsize-1);
+  font-weight: var(--fontweight-bold);
+}
+
+.last-message {
+  font-weight: var(--fontweight-bold);
+  color: var(--clr-neutral-50);
+}
+
+.message {
+  max-inline-size: 70%;
+  padding-block: var(--space-3x);
+  padding-inline: var(--space-4x);
+  border-radius: var(--radius-4);
+
+  .message-time {
+    font-size: var(--fontsize--1);
+    font-weight: var(--fontweight-regular);
+  }
+
+  .message-content {
+    margin-block-start: var(--space-1x);
+    font-weight: var(--fontweight-bold);
+    line-height: 1.2;
+  }
+}
+
+.incoming {
+  background-color: var(--clr-neutral-10);
+
+  .message-time {
+    color: var(--clr-neutral-70);
+  }
+}
+
+.outgoing {
+  margin-inline-start: auto;
+  color: var(--clr-neutral-0);
+  background-color: var(--clr-default-40);
+
+  .message-time {
+    color: var(--clr-neutral-20);
+  }
+}

@@ -1,17 +1,20 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { InputNumericComponent } from '../inputs/input-numeric/input-numeric.component';
 import { ButtonComponent } from '../button/button.component';
+import { Response } from './response/response';
+import { UserData } from './user-data'
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.html',
   styleUrls: ['../styles.scss', './app.scss'],
-  imports: [InputNumericComponent, ButtonComponent],
+  imports: [InputNumericComponent, ButtonComponent, Response],
   host: {
-    'class': 'box flow',
-    'style': '--flow-space: var(--space-4x-13x);'
-  }
+    class: 'box flow',
+    style: '--flow-space: var(--space-4x-13x);',
+  },
 })
 export class App {
-  protected title = 'customer-sentiment';
+  protected title = 'Customer Sentiment';
+  userData = inject(UserData);
 }

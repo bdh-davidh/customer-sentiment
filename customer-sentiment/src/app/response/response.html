@@ -1,0 +1,23 @@
+<div>
+  <div style="display: flex; justify-content: space-between;">
+    <p class="patient-id">Patient {{ userData()?.patient_id }}</p>
+    <div class="sentiment {{ userData()?.overall_sentiment.toLowerCase() }}">
+      {{ userData()?.overall_sentiment }}
+    </div>
+  </div>
+  <p class="last-message">
+    Last message: {{ userData()?.most_recent_matching_message.timestamp | date}}
+  </p>
+</div>
+
+
+<p>{{ userData()?.sentiment_reasoning }}</p>
+
+<ui-accordion heading="Show Messages" open="true">
+  @for (message of userData()?.messages; track $index) {
+    <div class="message outgoing">
+      <p class="message-time">{{ message.timestamp | date }}</p>
+      <p class="message-content">{{ message.content }}</p>
+    </div>
+  }
+</ui-accordion>
