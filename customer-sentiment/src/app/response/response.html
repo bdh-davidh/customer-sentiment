@@ -11,11 +11,11 @@
 </div>
 
 
-<p>{{ userData()?.sentiment_reasoning }}</p>
+<p class="summary">{{ userData()?.sentiment_reasoning }}</p>
 
-<ui-accordion heading="Show Messages" open="true">
+<ui-accordion heading="Hide/Show Messages">
   @for (message of userData()?.messages; track $index) {
-    <div class="message outgoing">
+    <div class="message {{ message.from_id == userData()?.patient_id ? 'incoming' : 'outgoing' }}">
       <p class="message-time">{{ message.timestamp | date }}</p>
       <p class="message-content">{{ message.content }}</p>
     </div>

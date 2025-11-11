@@ -1,8 +1,3 @@
-:host {
-  // FIXME why is it defaulting to inline?
-  display: block;
-}
-
 details {
   --transition-duration: 400ms;
   --transition-curve: var(--springy-curve);
@@ -14,23 +9,23 @@ details {
   transition-duration: var(--default-duration);
 
   &[open] {
-    border-color: var(--clr-default-20);
+    border-color: var(--clr-default-40);
   }
 
   .heading {
+    cursor: pointer;
     display: flex;
     gap: var(--space-1x);
-    padding: var(--compact-padding, var(--space-2x));
     align-items: center;
     justify-content: space-between;
+    padding: var(--compact-padding, var(--space-3x));
     list-style: none;
     outline: none;
-    cursor: pointer;
   }
 
   .content {
-    padding-block: var(--compact-padding, var(--space-2x));
-    padding-inline: var(--compact-padding, var(--space-2x));
+    padding-block: var(--compact-padding, var(--space-6x));
+    padding-inline: var(--compact-padding, var(--space-6x));
   }
 
   &:hover {
@@ -39,12 +34,6 @@ details {
 
   &:active {
     background-color: var(--clr-default-20);
-  }
-
-  // If has a focusable child, only focus on that element not the details itself
-  &:has(> summary:focus-visible) {
-    outline: var(--border-2) solid var(--focus-color, var(--clr-focusblue));
-    outline-offset: var(--focus-offset, 0.1em);
   }
 }
 
@@ -67,9 +56,11 @@ details[open] {
   block-size: 0;
   transition:
     block-size var(--transition-duration) var(--transition-curve),
-    content-visibility var(--transition-duration) var(--transition-curve) allow-discrete;
+    content-visibility var(--transition-duration) var(--transition-curve)
+      allow-discrete;
 }
 
 [open]::details-content {
+  content-visibility: visible;
   block-size: auto;
 }
