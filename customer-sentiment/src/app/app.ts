@@ -19,18 +19,18 @@ export class App {
   protected title = 'Customer Sentiment';
   readonly userDataStore = inject(UserDataStore);
   readonly patientId = signal<string>('');
-  
+
   onPatientIdChange(input: InputComponentOutput<number>): void {
     this.patientId.set(input.value?.toString() || '');
   }
-  
+
   async onGetMessages(): Promise<void> {
     const id = this.patientId();
     if (id) {
       await this.userDataStore.loadPatientData(id);
     }
   }
-  
+
   onClearAll(): void {
     this.userDataStore.clearAll();
     this.patientId.set('');
