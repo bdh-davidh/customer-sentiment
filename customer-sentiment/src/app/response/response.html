@@ -1,10 +1,10 @@
-<article class="patient-summary" [attr.aria-labelledby]="'patient-' + userData().patient_id">
+<article class="patient-summary flow" style="--flow-space: var(--space-4x);" [attr.aria-labelledby]="'patient-' + userData().patient_id">
   <header>
     <div style="display: flex; justify-content: space-between; align-items: center;">
       <h2 [id]="'patient-' + userData().patient_id" class="patient-id">
         Patient {{ userData().patient_id }}
       </h2>
-      <div 
+      <div
         class="sentiment {{ userData().overall_sentiment.toLowerCase() }}"
         [attr.aria-label]="'Sentiment: ' + userData().overall_sentiment">
         {{ userData().overall_sentiment }}
@@ -22,16 +22,16 @@
     <p class="summary">{{ userData().sentiment_reasoning }}</p>
   </section>
 
-  <ui-accordion 
-    [showHeading]="'Show Messages (' + userData().messages.length + ')'" 
+  <ui-accordion
+    [showHeading]="'Show Messages (' + userData().messages.length + ')'"
     [hideHeading]="'Hide Messages (' + userData().messages.length + ')'">
-    <div role="log" aria-label="Patient messages">
+    <div class="flow" role="log" aria-label="Patient messages" style="--flow-space: var(--space-3x);">
       @for (message of userData().messages; track trackByMessageId($index, message)) {
-        <div 
+        <div
           class="message {{ message.from_id.toString() === userData().patient_id ? 'incoming' : 'outgoing' }}"
           [attr.aria-label]="message.from_id.toString() === userData().patient_id ? 'Message from patient' : 'Message to patient'">
           <time class="message-time" [dateTime]="message.timestamp">
-            {{ message.timestamp | date:'short' }}
+            {{ message.timestamp | date:'medium' }}
           </time>
           <p class="message-content">{{ message.content | sanitizeHtml }}</p>
         </div>
