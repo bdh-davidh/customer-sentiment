@@ -1,6 +1,6 @@
 details {
   --transition-duration: 400ms;
-  --transition-curve: var(--springy-curve);
+  --transition-curve: cubic-bezier(0.4, 0, 0.2, 1);
 
   border: 1px solid;
   border-color: var(--clr-neutral-40);

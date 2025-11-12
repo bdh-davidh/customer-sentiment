@@ -4,6 +4,7 @@
   padding-inline: var(--space-4x);
   border-inline-start: 5px solid;
   border-radius: var(--radius-4);
+  margin-inline: var(--space-8x);
 
   > * {
     --flow-space: var(--space-4x);
@@ -23,11 +24,14 @@
 }
 
 .sentiment {
+  display: grid;
+  place-items: center;
   padding-block: var(--space-1x);
   padding-inline: var(--space-4x);
   border-radius: var(--radius-1);
   font-weight: var(--fontweight-bold);
   letter-spacing: 0.5px;
+  text-box: trim-both cap alphabetic;
 }
 
 .negative {
