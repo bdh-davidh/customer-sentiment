@@ -1,8 +1,9 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { InputNumericComponent } from '../inputs/input-numeric/input-numeric.component';
 import { ButtonComponent } from '../button/button.component';
 import { Response } from './response/response';
-import { UserData } from './user-data'
+import { UserDataStore } from './user-data';
+import { InputComponentOutput } from '../inputs/inputs.model';
 
 @Component({
   selector: 'app-root',
@@ -16,5 +17,22 @@ import { UserData } from './user-data'
 })
 export class App {
   protected title = 'Customer Sentiment';
-  userData = inject(UserData);
+  readonly userDataStore = inject(UserDataStore);
+  readonly patientId = signal<string>('');
+  
+  onPatientIdChange(input: InputComponentOutput<number>): void {
+    this.patientId.set(input.value?.toString() || '');
+  }
+  
+  async onGetMessages(): Promise<void> {
+    const id = this.patientId();
+    if (id) {
+      await this.userDataStore.loadPatientData(id);
+    }
+  }
+  
+  onClearAll(): void {
+    this.userDataStore.clearAll();
+    this.patientId.set('');
+  }
 }

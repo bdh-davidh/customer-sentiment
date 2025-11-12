@@ -1,23 +1,41 @@
-<div>
-  <div style="display: flex; justify-content: space-between;">
-    <p class="patient-id">Patient {{ userData()?.patient_id }}</p>
-    <div class="sentiment {{ userData()?.overall_sentiment.toLowerCase() }}">
-      {{ userData()?.overall_sentiment }}
+<article class="patient-summary" [attr.aria-labelledby]="'patient-' + userData().patient_id">
+  <header>
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+      <h2 [id]="'patient-' + userData().patient_id" class="patient-id">
+        Patient {{ userData().patient_id }}
+      </h2>
+      <div 
+        class="sentiment {{ userData().overall_sentiment.toLowerCase() }}"
+        [attr.aria-label]="'Sentiment: ' + userData().overall_sentiment">
+        {{ userData().overall_sentiment }}
+      </div>
     </div>
-  </div>
-  <p class="last-message">
-    Last message: {{ userData()?.most_recent_matching_message.timestamp | date}}
-  </p>
-</div>
+    <p class="last-message">
+      <time [dateTime]="userData().most_recent_matching_message.timestamp">
+        Last message: {{ userData().most_recent_matching_message.timestamp | date }}
+      </time>
+    </p>
+  </header>
 
+  <section aria-labelledby="summary-heading">
+    <h3 id="summary-heading" class="visually-hidden">Sentiment Analysis Summary</h3>
+    <p class="summary">{{ userData().sentiment_reasoning }}</p>
+  </section>
 
-<p class="summary">{{ userData()?.sentiment_reasoning }}</p>
-
-<ui-accordion heading="Hide/Show Messages">
-  @for (message of userData()?.messages; track $index) {
-    <div class="message {{ message.from_id == userData()?.patient_id ? 'incoming' : 'outgoing' }}">
-      <p class="message-time">{{ message.timestamp | date }}</p>
-      <p class="message-content">{{ message.content }}</p>
+  <ui-accordion 
+    [showHeading]="'Show Messages (' + userData().messages.length + ')'" 
+    [hideHeading]="'Hide Messages (' + userData().messages.length + ')'">
+    <div role="log" aria-label="Patient messages">
+      @for (message of userData().messages; track trackByMessageId($index, message)) {
+        <div 
+          class="message {{ message.from_id.toString() === userData().patient_id ? 'incoming' : 'outgoing' }}"
+          [attr.aria-label]="message.from_id.toString() === userData().patient_id ? 'Message from patient' : 'Message to patient'">
+          <time class="message-time" [dateTime]="message.timestamp">
+            {{ message.timestamp | date:'short' }}
+          </time>
+          <p class="message-content">{{ message.content | sanitizeHtml }}</p>
+        </div>
+      }
     </div>
-  }
-</ui-accordion>
+  </ui-accordion>
+</article>

@@ -1,17 +1,46 @@
 <h1>Communication Summaries</h1>
-<div style="display: flex; align-items; bottom; gap: var(--space-3x); align-items: end">
+<div style="display: flex; align-items: end; gap: var(--space-3x);" role="search" aria-label="Patient search">
   <ui-input-numeric
     label="Patient ID"
     placeholder="12345"
+    (inputChange)="onPatientIdChange($event)"
+    [initialValue]="null"
+    aria-describedby="patient-help"
     />
-  <button style="max-block-size: 45px;">Get Messages</button>
-  <button variant="outline" style="margin-left: auto; max-block-size: 45px;">Clear All</button>
+  <button
+    type="button"
+    style="max-block-size: 45px;"
+    (click)="onGetMessages()"
+    [disabled]="userDataStore.loading()"
+    aria-label="Get patient messages">
+    {{ userDataStore.loading() ? 'Loading...' : 'Get Messages' }}
+  </button>
+  <button
+    type="button"
+    variant="outline"
+    style="margin-left: auto; max-block-size: 45px;"
+    (click)="onClearAll()"
+    [disabled]="userDataStore.loading()"
+    aria-label="Clear all results">
+    Clear All
+  </button>
 </div>
+<div id="patient-help" class="visually-hidden">Enter a patient ID to search for patient sentiment data</div>
 
-<div class="flow" >
-  @for (user of userData.returnedData; track $index) {
-  <app-response [userData]="user"/>
-  } @empty {
-    <p>Messages will show here.</p>
-  }
-</div>
+@if (userDataStore.loading()) {
+  <div class="loading">
+    <p>Loading patient data...</p>
+  </div>
+} @else if (userDataStore.error()) {
+  <div class="error">
+    <p>Error: {{ userDataStore.error() }}</p>
+  </div>
+} @else {
+  <div class="flow" >
+    @for (user of userDataStore.data(); track user.patient_id) {
+      <app-response [userData]="user"/>
+    } @empty {
+      <p>Messages will show here.</p>
+    }
+  </div>
+}
