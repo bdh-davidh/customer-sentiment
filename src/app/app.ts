@@ -1,8 +1,9 @@
 import { Component, inject } from '@angular/core';
-import { InputNumericComponent } from '../inputs/input-numeric/input-numeric.component';
-import { ButtonComponent } from '../button/button.component';
+import { InputNumericComponent } from '../shared/inputs/input-numeric/input-numeric.component';
+import { ButtonComponent } from '../shared/button/button.component';
 import { Response } from './response/response';
-import { UserData } from './user-data'
+import { UserData } from './user-data';
+
 
 @Component({
   selector: 'app-root',
@@ -16,5 +17,6 @@ import { UserData } from './user-data'
 })
 export class App {
   protected title = 'Customer Sentiment';
+
   userData = inject(UserData);
 }

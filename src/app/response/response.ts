@@ -1,6 +1,7 @@
 import { Component, input } from '@angular/core';
 import { DatePipe } from '@angular/common';
-import { AccordionComponent } from '../../accordion/accordion.component'
+import { AccordionComponent } from '../../shared/accordion/accordion.component';
+
 
 @Component({
   selector: 'app-response',
@@ -12,5 +13,7 @@ import { AccordionComponent } from '../../accordion/accordion.component'
   }
 })
 export class Response {
-  userData = input<any>();
+  userData = input.required<any>();
+
+
 }
