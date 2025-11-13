@@ -1,26 +1,25 @@
-<li class="patient-summary flow" style="--flow-space: var(--space-4x); list-style: none;">
-<div>
-  <div style="display: flex; justify-content: space-between">
-    <p class="patient-id">Patient {{ response()?.patient_id }}</p>
-    <div class="sentiment {{ response()?.overall_sentiment.toLowerCase() }}">
-      {{ response()?.overall_sentiment }}
+<li
+  class="patient-summary flow"
+  style="--flow-space: var(--space-4x); list-style: none"
+>
+  <div>
+    <div style="display: flex; justify-content: space-between">
+      <p class="patient-id">Patient {{ response()?.patient_id }}</p>
+      <div class="sentiment {{ response()?.overall_sentiment.toLowerCase() }}">
+        {{ response()?.overall_sentiment }}
+      </div>
     </div>
+    <p class="last-message">
+      Last message: {{ response()?.most_recent_matching_message.timestamp |
+      date}}
+    </p>
   </div>
-  <p class="last-message">
-    Last message: {{ response()?.most_recent_matching_message.timestamp | date}}
-  </p>
-</div>
 
-<p class="summary">{{ response()?.sentiment_reasoning }}</p>
+  <p class="summary">{{ response()?.sentiment_reasoning }}</p>
 
-<ui-accordion hideHeading="Show Messages" showHeading="Hide Messages">
-  @for (message of response()?.messages; track $index) {
-  <div
-    class="message {{ message.from_id == response()?.patient_id ? 'incoming' : 'outgoing' }}" style="--flow-space: var(--space-3x)"
-  >
-    <p class="message-time">{{ message.timestamp | date }}</p>
-    <p class="message-content">{{ message.content }}</p>
-  </div>
-  }
-</ui-accordion>
+  <ui-accordion hideHeading="Show Messages" showHeading="Hide Messages">
+    @for (message of response()?.messages; track $index) {
+      <app-message [user]="response()?.patient_id" [message]="message"/>
+    }
+  </ui-accordion>
 </li>

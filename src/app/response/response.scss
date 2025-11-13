@@ -56,30 +56,3 @@
   font-size: var(--fontsize--1);
   color: var(--clr-neutral-70);
 }
-
-.message {
-  padding: var(--space-3x);
-  border-radius: var(--radius-3);
-
-  &.incoming {
-    max-inline-size: 70%;
-    background: var(--clr-neutral-10);
-
-    .message-time {
-      font-size: var(--fontsize--1);
-      color: var(--clr-neutral-50);
-    }
-  }
-
-  &.outgoing {
-    max-inline-size: 70%;
-    margin-inline-start: auto;
-    color: var(--clr-neutral-0);
-    background: var(--clr-default-40);
-
-    .message-time {
-      font-size: var(--fontsize--1);
-      color: var(--clr-default-30);
-    }
-  }
-}
