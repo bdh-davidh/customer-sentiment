@@ -9,8 +9,8 @@
 </div>
 
 <div class="flow" >
-  @for (user of userData.returnedData; track $index) {
-  <app-response [userData]="user"/>
+  @for (response of users.responses; track $index) {
+  <app-response [response]="response"/>
   } @empty {
     <p>Messages will show here.</p>
   }

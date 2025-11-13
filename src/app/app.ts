@@ -1,8 +1,9 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { InputNumericComponent } from '../shared/inputs/input-numeric/input-numeric.component';
 import { ButtonComponent } from '../shared/button/button.component';
 import { Response } from './response/response';
-import { UserData } from './user-data';
+import { Users } from './users.service';
+
 
 
 @Component({
@@ -17,6 +18,6 @@ import { UserData } from './user-data';
 })
 export class App {
   protected title = 'Customer Sentiment';
+  users = inject(Users)
 
-  userData = inject(UserData);
 }

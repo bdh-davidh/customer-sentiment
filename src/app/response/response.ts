@@ -9,11 +9,9 @@ import { AccordionComponent } from '../../shared/accordion/accordion.component';
   templateUrl: './response.html',
   styleUrl: './response.scss',
   host: {
-    'class': 'flow'
-  }
+    class: 'flow',
+  },
 })
 export class Response {
-  userData = input.required<any>();
-
-
+  response = input.required<any>();
 }

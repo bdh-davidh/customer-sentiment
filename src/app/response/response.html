@@ -1,23 +1,24 @@
 <div>
-  <div style="display: flex; justify-content: space-between;">
-    <p class="patient-id">Patient {{ userData()?.patient_id }}</p>
-    <div class="sentiment {{ userData()?.overall_sentiment.toLowerCase() }}">
-      {{ userData()?.overall_sentiment }}
+  <div style="display: flex; justify-content: space-between">
+    <p class="patient-id">Patient {{ response()?.patient_id }}</p>
+    <div class="sentiment {{ response()?.overall_sentiment.toLowerCase() }}">
+      {{ response()?.overall_sentiment }}
     </div>
   </div>
   <p class="last-message">
-    Last message: {{ userData()?.most_recent_matching_message.timestamp | date}}
+    Last message: {{ response()?.most_recent_matching_message.timestamp | date}}
   </p>
 </div>
 
-
-<p class="summary">{{ userData()?.sentiment_reasoning }}</p>
+<p class="summary">{{ response()?.sentiment_reasoning }}</p>
 
 <ui-accordion hideHeading="Show Messages" showHeading="Hide Messages">
-  @for (message of userData()?.messages; track $index) {
-    <div class="message {{ message.from_id == userData()?.patient_id ? 'incoming' : 'outgoing' }}">
-      <p class="message-time">{{ message.timestamp | date }}</p>
-      <p class="message-content">{{ message.content }}</p>
-    </div>
+  @for (message of response()?.messages; track $index) {
+  <div
+    class="message {{ message.from_id == response()?.patient_id ? 'incoming' : 'outgoing' }}"
+  >
+    <p class="message-time">{{ message.timestamp | date }}</p>
+    <p class="message-content">{{ message.content }}</p>
+  </div>
   }
 </ui-accordion>

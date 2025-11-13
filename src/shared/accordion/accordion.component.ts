@@ -17,11 +17,11 @@ export class AccordionComponent {
   content = input<string>();
   groupName = signal<string>(''); // Enables exclusive accordion behavior
   isOpen = signal<boolean>(false);
-  
-  currentHeading = computed(() => 
+
+  currentHeading = computed(() =>
     this.isOpen() ? this.hideHeading() : this.showHeading()
   );
-  
+
   onToggle(): void {
     this.isOpen.set(!this.isOpen());
   }

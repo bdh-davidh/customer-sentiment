@@ -13,7 +13,7 @@ import {
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { debounceTime } from 'rxjs';
-import { UiWarningIconDirective } from '../../../shared/icons/warning-icon.directive';
+import { UiWarningIconDirective } from '../../icons/warning-icon.directive';
 import { buildErrorMessages } from '../inputs-build-error-messages';
 import { buildValidators } from '../inputs-build-validators';
 import { ErrorMessageConfig, InputComponentOutput, NumericInputConfig } from '../inputs.model';
@@ -22,7 +22,7 @@ import { ErrorMessageConfig, InputComponentOutput, NumericInputConfig } from '..
   selector: 'ui-input-numeric',
   imports: [CommonModule, ReactiveFormsModule, UiWarningIconDirective],
   templateUrl: './input-numeric.component.html',
-  styleUrls: ['../../styles/primitives/inputs.scss', './input-numeric.component.scss'],
+  styleUrls: ['../../../styles/primitives/inputs.scss', './input-numeric.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InputNumericComponent implements OnInit {
