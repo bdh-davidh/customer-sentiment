@@ -5,8 +5,10 @@
     placeholder="12345"
     [showErrorMessage]="false"
     style="min-width: 15rem;"
+    [validators]="{ required: false }"
+    #patientIdInput
     />
-  <button style="max-block-size: 45px;">Get Messages</button>
+  <button style="max-block-size: 45px;" (click)="handleClick(patientIdInput)">Get Messages</button>
   <button variant="outline" style="margin-left: auto; max-block-size: 45px;">Clear All</button>
 </div>
 

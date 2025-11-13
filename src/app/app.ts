@@ -6,13 +6,14 @@ import { Users } from './users.service';
 
 
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.html',
   styleUrls: ['../styles.scss', './app.scss'],
   imports: [InputNumericComponent, ButtonComponent, Response],
   host: {
-    class: 'box flow',
+    class: 'flow',
     style: '--flow-space: var(--space-4x-13x);',
   },
 })
@@ -20,4 +21,8 @@ export class App {
   protected title = 'Customer Sentiment';
   users = inject(Users)
 
+  handleClick(input: any) {
+    this.users.fetchPatientMessages(input);
+
+  }
 }

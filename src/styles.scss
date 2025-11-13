@@ -29,17 +29,9 @@
 body {
   min-block-size: 100dvb;
   display: grid;
-  grid-template-columns: [full-start] 1fr [content-start] 5rem [narrow-start] 60rem [narrow-end] 5rem [content-end] 1fr [full-end];
+  grid-template-columns: 1fr [content-start] 60rem [content-end] 1fr;
 
   >* {
     grid-column: content;
-  }
-
-  >.wide-bleed {
-    grid-column: wide;
-  }
-
-  >.full-bleed {
-    grid-column: full;
   }
 }
