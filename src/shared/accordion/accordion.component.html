@@ -5,13 +5,12 @@ Required inputs:
   heading(): string
 Optional inputs:
   content(): string
-  groupName(): string
   open(): boolean
 -->
 
 <details [attr.name]="groupName()" [open]="openOnRender()">
   <!-- Clickable header with expand/collapse icon -->
-  <summary class="heading">
+  <summary class="heading" (click)="onClick()">
     <!-- Display text from [heading] input -->
     <span>{{ currentHeading() }}</span>
     <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true">

@@ -19,10 +19,10 @@ export class AccordionComponent {
   isOpen = signal<boolean>(false);
 
   currentHeading = computed(() =>
-    this.isOpen() ? this.hideHeading() : this.showHeading()
+    this.isOpen() ? this.hideHeading() : this.showHeading(),
   );
 
-  onToggle(): void {
+  onClick(): void {
     this.isOpen.set(!this.isOpen());
   }
 }

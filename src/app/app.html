@@ -8,10 +8,10 @@
   <button variant="outline" style="margin-left: auto; max-block-size: 45px;">Clear All</button>
 </div>
 
-<div class="flow" >
+<ul class="flow" style="">
   @for (response of users.responses; track $index) {
-  <app-response [response]="response"/>
+  <app-response [response]="response" style="--flow-space: var(--space-10x); display: block;"/>
   } @empty {
-    <p>Messages will show here.</p>
+    <li>Messages will show here.</li>
   }
-</div>
+</ul>
