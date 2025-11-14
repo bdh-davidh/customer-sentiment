@@ -1,6 +1,8 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError, catchError } from 'rxjs';
+import { Responses } from './responses.service';
+import { Response } from './models';
 
 @Injectable({
   providedIn: 'root',
@@ -8,32 +10,29 @@ import { Observable, throwError, catchError } from 'rxjs';
 export class FetchPatientData {
   private readonly http = inject(HttpClient);
   private readonly apiUrl = `https://dev-sapi.lemonaidpims.co.uk/sentiment/analyse`;
+  private responses = inject(Responses);
 
-  fetchData(patientID: string) {
-    const requestBody = { patientID };
+  private fetchData(patient_id: string) {
+    const requestBody = { patient_id };
 
     return this.http
-      .post<string>(this.apiUrl, requestBody)
+      .post<Response>(this.apiUrl, requestBody)
       .pipe(catchError((error) => this.handleError(error)));
   }
 
-  getMessages(patientID: string) {
-    this.fetchData(patientID).subscribe({
-      next: (response) => {
-        console.log(response);
-      },
-      error: (error) => {
-        console.error(error.message);
-      },
+  private updateResponses(response: Response) {
+    this.responses.data.update((existingResponses) => {
+      const filteredResponses = existingResponses.filter(
+        (existingResponse) =>
+          existingResponse.patient_id !== response.patient_id,
+      );
+      return [response, ...filteredResponses];
     });
   }
 
   private handleError(error: HttpErrorResponse): Observable<never> {
-    let errorMessage = 'An error occurred';
+    let errorMessage: string;
 
-    if (error.error instanceof ErrorEvent) {
-      errorMessage = `Network error: ${error.error.message}`;
-    } else {
       switch (error.status) {
         case 404:
           errorMessage =
@@ -52,9 +51,19 @@ export class FetchPatientData {
         default:
           errorMessage = `Request failed with status ${error.status}. Please try again.`;
       }
-    }
 
     return throwError(() => new Error(errorMessage));
+  }
+
+  getMessages(patientID: string) {
+    this.fetchData(patientID).subscribe({
+      next: (response) => {
+        this.updateResponses(response);
+      },
+      error: (error) => {
+        console.error(error.message);
+      },
+    });
   }
 }
 
@@ -62,10 +71,8 @@ export class FetchPatientData {
   TODO
     - Fetch patient data based on id
       - Disable fetch button and update message while loading
-      - Check if patient id already exists (if so remove)
-      - Push data to end responses array
-    - If successful clear input value
+      - If successful clear input value
+      - If error pass the error message to an error component and render
 
-    - If an error catch it and render a component, remove when fetch is clicked again
-    - Include the error messages in the error component
+    - How to handle errors?
   */

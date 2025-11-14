@@ -1,5 +1,5 @@
 <div
-  class="message {{ message()?.from_id?.toString() == user() ? 'outgoing' : 'incoming' }}"
+  class="message {{ message()?.from_id?.toString() === user() ? 'incoming' : 'outgoing' }}"
   style="--flow-space: var(--space-3x)"
 >
   <p class="message-time">{{ message()?.timestamp | date }}</p>

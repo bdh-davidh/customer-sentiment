@@ -22,7 +22,7 @@
 </div>
 
 <ul class="flow" style="list-style:none">
-  @for (response of users.responses; track $index) {
+  @for (response of responses.data(); track $index) {
   <li>
     <app-response
       [response]="response"

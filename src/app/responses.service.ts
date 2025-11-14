@@ -1,11 +1,11 @@
-import { Injectable } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
 import { Response } from './models';
 
 @Injectable({
   providedIn: 'root',
 })
-export class Users {
-  responses: Response[] = []
+export class Responses {
+  data = signal<Response[]>([])
   // responses = [
   //   {
   //     patient_id: '64374',

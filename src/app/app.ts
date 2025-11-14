@@ -3,7 +3,7 @@ import { InputNumericComponent } from '../shared/inputs/input-numeric/input-nume
 import { ButtonComponent } from '../shared/button/button.component';
 import { ResponseComponent } from './response/response';
 import { FetchPatientData } from './fetch.service';
-import { Users } from './users.service';
+import { Responses } from './responses.service';
 
 @Component({
   selector: 'app-root',
@@ -18,7 +18,7 @@ import { Users } from './users.service';
 export class App {
   protected title = 'Customer Sentiment';
   fetchPatientData = inject(FetchPatientData);
-  users = inject(Users);
+  responses = inject(Responses);
 
   handleClick(input: string) {
     this.fetchPatientData.getMessages(input);
