@@ -1,7 +1,7 @@
 import { Component, input } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { AccordionComponent } from '../../shared/accordion/accordion.component';
-import { MessageComponent } from "./message/message";
+import { MessageComponent } from './message/message';
 import { Response } from '../models';
 
 

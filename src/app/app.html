@@ -1,6 +1,6 @@
 <h1>Communication Summaries</h1>
 <div
-  style="display: flex; align-items; bottom; gap: var(--space-3x); align-items: end"
+  style="display: flex; align-items; bottom; gap: var(--space-3x); align-items: end; flex-wrap: wrap;"
 >
   <ui-input-numeric
     label="Patient ID"
@@ -21,12 +21,14 @@
   </button>
 </div>
 
-<ul class="flow" style="">
+<ul class="flow" style="list-style:none">
   @for (response of users.responses; track $index) {
-  <app-response
-    [response]="response"
-    style="--flow-space: var(--space-10x); display: block"
-  />
+  <li>
+    <app-response
+      [response]="response"
+      style="--flow-space: var(--space-10x); display: block"
+    />
+  </li>
   } @empty {
   <li>Messages will show here.</li>
   }

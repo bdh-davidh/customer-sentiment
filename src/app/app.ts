@@ -11,7 +11,7 @@ import { Users } from './users.service';
   styleUrls: ['../styles.scss', './app.scss'],
   imports: [InputNumericComponent, ButtonComponent, ResponseComponent],
   host: {
-    class: 'flow',
+    class: 'flow box',
     style: '--flow-space: var(--space-4x-13x);',
   },
 })
