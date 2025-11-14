@@ -1,5 +1,6 @@
 import { Component, input } from '@angular/core';
 import { DatePipe } from '@angular/common';
+import { Message } from '../../models';
 
 @Component({
   selector: 'app-message',
@@ -7,7 +8,7 @@ import { DatePipe } from '@angular/common';
   templateUrl: './message.html',
   styleUrl: './message.scss',
 })
-export class Message {
-  message = input<any>();
-  user = input<any>();
+export class MessageComponent {
+  message = input<Message>();
+  user = input<string>();
 }

@@ -1,21 +1,38 @@
 <h1>Communication Summaries</h1>
-<div style="display: flex; align-items; bottom; gap: var(--space-3x); align-items: end">
+<div
+  style="display: flex; align-items; bottom; gap: var(--space-3x); align-items: end"
+>
   <ui-input-numeric
     label="Patient ID"
     placeholder="12345"
     [showErrorMessage]="false"
-    style="min-width: 15rem;"
+    style="min-width: 15rem"
     [validators]="{ required: false }"
     #patientIdInput
-    />
-  <button style="max-block-size: 45px;" (click)="handleClick(patientIdInput)">Get Messages</button>
-  <button variant="outline" style="margin-left: auto; max-block-size: 45px;">Clear All</button>
+  />
+  <button
+    style="max-block-size: 45px"
+    (click)="handleClick(patientIdInput.formControl.value)"
+  >
+    Get Messages
+  </button>
+  <button variant="outline" style="margin-left: auto; max-block-size: 45px">
+    Clear All
+  </button>
 </div>
 
 <ul class="flow" style="">
   @for (response of users.responses; track $index) {
-  <app-response [response]="response" style="--flow-space: var(--space-10x); display: block;"/>
+  <app-response
+    [response]="response"
+    style="--flow-space: var(--space-10x); display: block"
+  />
   } @empty {
-    <li>Messages will show here.</li>
+  <li>Messages will show here.</li>
   }
 </ul>
+
+<!--
+TODO
+- Add @if to enable an error block to be rendered if there's an error
+-->

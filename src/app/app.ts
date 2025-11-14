@@ -1,17 +1,15 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { InputNumericComponent } from '../shared/inputs/input-numeric/input-numeric.component';
 import { ButtonComponent } from '../shared/button/button.component';
-import { Response } from './response/response';
+import { ResponseComponent } from './response/response';
+import { FetchPatientData } from './fetch.service';
 import { Users } from './users.service';
-
-
-
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.html',
   styleUrls: ['../styles.scss', './app.scss'],
-  imports: [InputNumericComponent, ButtonComponent, Response],
+  imports: [InputNumericComponent, ButtonComponent, ResponseComponent],
   host: {
     class: 'flow',
     style: '--flow-space: var(--space-4x-13x);',
@@ -19,10 +17,10 @@ import { Users } from './users.service';
 })
 export class App {
   protected title = 'Customer Sentiment';
-  users = inject(Users)
+  fetchPatientData = inject(FetchPatientData);
+  users = inject(Users);
 
-  handleClick(input: any) {
-    this.users.fetchPatientMessages(input);
-
+  handleClick(input: string) {
+    this.fetchPatientData.getMessages(input);
   }
 }

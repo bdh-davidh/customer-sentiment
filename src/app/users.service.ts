@@ -132,10 +132,4 @@ export class Users {
       analysis_timestamp: '2025-11-06T09:19:39.311585+00:00',
     },
   ];
-
-  fetchPatientMessages(input: any) {
-    console.log(input.formControl.value);
-
-    input.formControl.setValue(null);
-  }
 }
