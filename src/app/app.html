@@ -12,16 +12,29 @@
   />
   <button
     style="max-block-size: 45px"
-    (click)="handleClick(patientIdInput.formControl.value)"
+    (click)="handleGetMessagesClick(patientIdInput)"
   >
     Get Messages
   </button>
-  <button variant="outline" style="margin-left: auto; max-block-size: 45px">
+  <button
+    variant="outline"
+    style="margin-left: auto; max-block-size: 45px"
+    (click)="handleClearResults(patientIdInput)"
+  >
     Clear All
   </button>
 </div>
 
-<ul class="flow" style="list-style:none">
+<div
+  class="error"
+  [style.visibility]="this.errors.data() ? 'visible' : 'hidden'"
+  style="--flow-space: var(--space-2x)"
+>
+  <svg warningIcon aria-hidden="true" fill="var(--clr-error-100)"></svg>
+  <p>{{ this.errors.data() }}</p>
+</div>
+
+<ul class="flow" style="list-style: none">
   @for (response of responses.data(); track $index) {
   <li>
     <app-response
@@ -33,8 +46,3 @@
   <li>Messages will show here.</li>
   }
 </ul>
-
-<!--
-TODO
-- Add @if to enable an error block to be rendered if there's an error
--->

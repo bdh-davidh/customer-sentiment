@@ -1,9 +1,8 @@
 import { Injectable, signal } from '@angular/core';
-import { Response } from './models';
 
 @Injectable({
   providedIn: 'root',
 })
-export class Responses {
-  data = signal<Response[]>([])
+export class Errors {
+  data = signal<string | null>(null)
 }

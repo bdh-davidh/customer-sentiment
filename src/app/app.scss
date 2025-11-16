@@ -1,0 +1,14 @@
+.error {
+  display: flex;
+  gap: var(--space-2x);
+  align-items: center;
+
+  svg {
+    max-inline-size: 3rem;
+  }
+
+  p {
+    font-weight: var(--fontweight-bold);
+    color: var(--clr-error-100);
+  }
+}
