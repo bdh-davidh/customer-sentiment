@@ -1,4 +1,4 @@
-import { Injectable, inject } from '@angular/core';
+import { Injectable, inject, signal } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError, catchError } from 'rxjs';
 import { InputNumericComponent } from '../shared/inputs/input-numeric/input-numeric.component';
@@ -14,7 +14,7 @@ export class FetchPatientData {
   private readonly apiUrl = `https://dev-sapi.lemonaidpims.co.uk/sentiment/analyse`;
   private responses = inject(Responses);
   private errors = inject(Errors);
-  fetchingData = false;
+  fetchingData = signal(false);
 
   private fetchData(patient_id: string) {
     const requestBody = { patient_id };
@@ -57,19 +57,21 @@ export class FetchPatientData {
   }
 
   getMessages(input: InputNumericComponent) {
-    // Clear any previous errors
-    this.errors.data.set(null);
-    this.fetchingData = true;
+    const patientId = input.formControl.value?.trim();
+    if (!patientId) return;
 
-    this.fetchData(input.formControl.value).subscribe({
+    this.errors.data.set(null);
+    this.fetchingData.set(true);
+
+    this.fetchData(patientId).subscribe({
       next: (response) => {
         this.updateResponses(response);
-        this.fetchingData = false;
+        this.fetchingData.set(false);
         input.formControl.setValue('');
       },
       error: (error) => {
         this.errors.data.set(error.message);
-        this.fetchingData = false;
+        this.fetchingData.set(false);
         console.error(error);
       },
     });

@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { InputNumericComponent } from '../shared/inputs/input-numeric/input-numeric.component';
 import { ButtonComponent } from '../shared/button/button.component';
 import { ResponseComponent } from './response/response';
@@ -11,6 +11,7 @@ import { UiWarningIconDirective } from '../shared/icons/warning-icon.directive';
   selector: 'app-root',
   templateUrl: './app.html',
   styleUrls: ['../styles.scss', './app.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     InputNumericComponent,
     ButtonComponent,
@@ -35,7 +36,11 @@ export class App {
   }
 
   handleGetMessagesClick(input: InputNumericComponent) {
-    if (!input.formControl.value) return;
+    const value = input.formControl.value?.toString().trim();
+    if (!value || input.formControl.invalid) {
+      input.formControl.markAsTouched();
+      return;
+    }
     this.fetchPatientData.getMessages(input);
   }
 }
