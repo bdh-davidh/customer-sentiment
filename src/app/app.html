@@ -1,6 +1,6 @@
 <h1>Communication Summaries</h1>
 <div
-  style="display: flex; align-items: end; gap: var(--space-3x); flex-wrap: wrap;"
+  style="display: flex; align-items: end; gap: var(--space-3x); flex-wrap: wrap"
 >
   <ui-input-numeric
     label="Patient ID"
@@ -16,10 +16,17 @@
     [disabled]="this.fetchPatientData.fetchingData()"
   >
     @if (this.fetchPatientData.fetchingData()) {
-      Fetching Data
-    } @else {
-      Get Messages
-    }
+    <span>
+      Loading
+      <span class="ellipsis-animation">
+        <span>. </span>
+        <span>. </span>
+        <span>. </span>
+        <span>. </span>
+        <span>. </span>
+      </span>
+  </span>
+    } @else { Get Messages }
   </button>
   <button
     variant="outline"
