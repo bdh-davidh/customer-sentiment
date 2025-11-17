@@ -13,8 +13,13 @@
   <button
     style="max-block-size: 45px"
     (click)="handleGetMessagesClick(patientIdInput)"
+    [disabled]="this.fetchPatientData.fetchingData"
   >
-    Get Messages
+    @if (this.fetchPatientData.fetchingData) {
+      Fetching Data
+    } @else {
+      Get Messages
+    }
   </button>
   <button
     variant="outline"
@@ -42,7 +47,5 @@
       style="--flow-space: var(--space-10x); display: block"
     />
   </li>
-  } @empty {
-  <li>Messages will show here.</li>
   }
 </ul>

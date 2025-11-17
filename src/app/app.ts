@@ -35,6 +35,7 @@ export class App {
   }
 
   handleGetMessagesClick(input: InputNumericComponent) {
+    if (!input.formControl.value) return;
     this.fetchPatientData.getMessages(input);
   }
 }

@@ -14,6 +14,7 @@ export class FetchPatientData {
   private readonly apiUrl = `https://dev-sapi.lemonaidpims.co.uk/sentiment/analyse`;
   private responses = inject(Responses);
   private errors = inject(Errors);
+  fetchingData = false;
 
   private fetchData(patient_id: string) {
     const requestBody = { patient_id };
@@ -58,21 +59,19 @@ export class FetchPatientData {
   getMessages(input: InputNumericComponent) {
     // Clear any previous errors
     this.errors.data.set(null);
+    this.fetchingData = true;
 
     this.fetchData(input.formControl.value).subscribe({
       next: (response) => {
         this.updateResponses(response);
+        this.fetchingData = false;
         input.formControl.setValue('');
       },
       error: (error) => {
         this.errors.data.set(error.message);
+        this.fetchingData = false;
+        console.error(error);
       },
     });
   }
 }
-
-/*
-  TODO
-    - Fetch patient data based on id
-      - Disable fetch button and update message while loading
-  */
