@@ -6,10 +6,11 @@
 
 .message {
   padding: var(--space-3x);
-  border-radius: var(--radius-3);
+
 
   &.incoming {
     max-inline-size: 70%;
+    border-radius: var(--radius-4) var(--radius-4) var(--radius-4) 0;
     background: var(--clr-neutral-10);
 
     .message-time {
@@ -21,6 +22,7 @@
   &.outgoing {
     max-inline-size: 70%;
     margin-inline-start: auto;
+    border-radius: var(--radius-4) var(--radius-4) 0 var(--radius-4);
     color: var(--clr-neutral-0);
     background: var(--clr-default-40);
 

@@ -18,7 +18,7 @@
   <p class="summary">{{ response().sentiment_reasoning }}</p>
 
   @if (response().messages.length) {
-    <ui-accordion hideHeading="Show Messages" showHeading="Hide Messages">
+    <ui-accordion hideHeading="Hide Messages ({{ response().messages.length }})" showHeading="Show Messages ({{ response().messages.length }})">
       @for (message of response().messages; track $index) {
       <app-message [user]="response().patient_id" [message]="message" />
       }
